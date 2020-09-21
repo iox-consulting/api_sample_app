@@ -7,7 +7,7 @@ Iox will provide you with:
 2. username
 3. api-key
 
-Open the iox_sample_application's appsettings.json file and replace the tenant_id, username, and api-key provided by IOX.
+Open the iox_sample_application's appsettings.json file and replace the tenant_id, username, and api-key.
 
 
 ## Endpoint Configuration
