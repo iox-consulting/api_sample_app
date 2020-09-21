@@ -31,17 +31,45 @@ namespace iox_sample_app.Controllers
                 var response = JsonConvert.DeserializeObject<ResponseObject>(payload);
                 if (response.ResponseType == (int)ResponseTypes.AccountOtp)
                 {
-                    var accountOTPResponse = JsonConvert.DeserializeObject<AccountOTPResponse>(response.result.ToString());
+                    if (response.status == "Success")
+                    {
+                        var accountOTPResponse = JsonConvert.DeserializeObject<AccountOTPResponse>(response.result.ToString());
+                        //TODO your logic
+                    }
+                    else
+                    {
+                        var errors = response.errors;
+                    }
                 }
                 else if (response.ResponseType == (int)ResponseTypes.InstructionStatusUpdate)
                 {
-                    var instructionResponse =
-                        JsonConvert.DeserializeObject<InstructionResponse>(response.result.ToString());
+                    if (response.status == "Success")
+                    {
+                        var instructionResponse =
+                            JsonConvert.DeserializeObject<InstructionResponse>(response.result.ToString());
+                        //TODO your logic
+                    }
+                    else
+                    {
+                        var errors = response.errors;
+                    }
                 }
                 else if (response.ResponseType == (int)ResponseTypes.QuoteCreated)
                 {
-                    var quote =
-                        JsonConvert.DeserializeObject<Quote>(response.result.ToString());
+                    if (response.status == "Success")
+                    {
+                        var quote =
+                            JsonConvert.DeserializeObject<Quote>(response.result.ToString());
+                        //TODO your logic
+                    }
+                    else
+                    {
+                        var errors = response.errors;
+                    }
+                }
+                else
+                {
+                    return BadRequest("Invalid response type");
                 }
 
                 return Ok();

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using iox_sample_app.Helper;
+using iox_sample_app.Helper.Interfaces;
+using iox_sample_app.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,7 +29,20 @@ namespace iox_sample_app
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            var ioxSettingsSection = Configuration.GetSection("iox_settings");
+            services.Configure<IoxSettings>(ioxSettingsSection);
             services.AddTransient<ISignatureVerifier, SignatureVerifier>();
+            services.AddHttpClient("iox_auth", c =>
+            {
+                c.BaseAddress = new Uri("https://stagingintegration.ioxfleet.co.za/api/Auth/RequestToken");
+            });
+            services.AddHttpClient("iox", c =>
+            {
+                c.BaseAddress = new Uri("https://stagingintegration.ioxfleet.co.za/api/external/");
+                c.DefaultRequestHeaders.Add("tenant", ioxSettingsSection.Get<IoxSettings>().tenantId);
+            });
+            services.AddSingleton<IMemoryTokenStore, MemoryTokenStore>();
+            services.AddSingleton<IAPIService, APIService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
