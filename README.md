@@ -1,4 +1,5 @@
-# IOX 3rd party API Documentation: http://redocly.github.io/redoc/?url=https://stagingintegration.ioxfleet.co.za/swagger/v1/swagger.json
+# IOX 3rd party API Documentation: 
+http://redocly.github.io/redoc/?url=https://stagingintegration.ioxfleet.co.za/swagger/v1/swagger.json
 
 ## Iox Settings Configuration
 Iox will provide you with:
