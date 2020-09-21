@@ -1,12 +1,13 @@
-﻿using iox_sample_app.Helper;
+﻿using iox_sample_app.Helper.Interfaces;
+using iox_sample_app.Requests;
 using iox_sample_app.Responses;
+using iox_sample_app.Services;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using iox_sample_app.Helper.Interfaces;
 
 namespace iox_sample_app.Controllers
 {
@@ -15,10 +16,33 @@ namespace iox_sample_app.Controllers
     public class EndPointController : ControllerBase
     {
         private readonly ISignatureVerifier _signatureVerifier;
+        private readonly IAPIService _apiService;
 
-        public EndPointController(ISignatureVerifier signatureVerifier)
+        public EndPointController(ISignatureVerifier signatureVerifier, IAPIService apiService)
         {
             _signatureVerifier = signatureVerifier ?? throw new ArgumentNullException(nameof(signatureVerifier));
+            _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Configure()
+        {
+            var response = await _apiService.ConfigureEndPoint(new EndPointRequest()
+            {
+                sharedkey = "YourSharedKeyProvidedWhenSettingUpEndpoint",
+                url = "{Your_ngrok_url}/EndPoint/Response"
+            });
+
+            if (response.status == "Success")
+            {
+                var sharedKey = JsonConvert.DeserializeObject<EndPointResponse>(response.result.ToString());
+            }
+            else
+            {
+                var errors = response.errors;
+            }
+
+            return Ok(response);
         }
 
         [HttpPost("Response")]

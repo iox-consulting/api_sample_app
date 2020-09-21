@@ -7,5 +7,6 @@ namespace iox_sample_app.Services
     public interface IAPIService
     {
         Task<ResponseObject> CreateBRN(BRNRequest request);
+        Task<ResponseObject> ConfigureEndPoint(EndPointRequest request);
     }
 }

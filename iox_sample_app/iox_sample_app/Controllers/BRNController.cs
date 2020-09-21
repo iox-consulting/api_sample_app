@@ -1,6 +1,8 @@
 ﻿using iox_sample_app.Requests;
+using iox_sample_app.Responses;
 using iox_sample_app.Services;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 
@@ -22,14 +24,23 @@ namespace iox_sample_app.Controllers
         {
             try
             {
-                var result = await _apiService.CreateBRN(new BRNRequest()
+                var response = await _apiService.CreateBRN(new BRNRequest()
                 {
                     accountReference = "00402176*001",
                     brn = "123412341123",
                     individualIdNumber = "9407025011089",
                     referenceId = "00031234"
                 });
-                return Ok(result);
+
+                if (response.status == "Success")
+                {
+                    var requestId = JsonConvert.DeserializeObject<InstructionResponse>(response.result.ToString());
+                }
+                else
+                {
+                    var errors = response.errors;
+                }
+                return Ok(response);
             }
             catch (Exception e)
             {
