@@ -24,7 +24,7 @@ namespace iox_sample_app.Controllers
             _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
         }
 
-        [HttpGet]
+        [HttpGet("Configure")]
         public async Task<IActionResult> Configure()
         {
             var response = await _apiService.ConfigureEndPoint(new EndPointRequest()
@@ -34,15 +34,9 @@ namespace iox_sample_app.Controllers
             });
 
             if (response.status == "Success")
-            {
-                var sharedKey = JsonConvert.DeserializeObject<EndPointResponse>(response.result.ToString());
-            }
+                return Ok(JsonConvert.DeserializeObject<EndPointResponse>(response.result.ToString()));
             else
-            {
-                var errors = response.errors;
-            }
-
-            return Ok(response);
+                return BadRequest(response.errors);
         }
 
         [HttpPost("Response")]
