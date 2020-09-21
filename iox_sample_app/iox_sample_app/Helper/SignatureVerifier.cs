@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using iox_sample_app.Helper.Interfaces;
 
 namespace iox_sample_app.Helper
 {
