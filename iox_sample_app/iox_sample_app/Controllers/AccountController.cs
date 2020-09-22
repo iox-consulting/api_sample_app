@@ -30,7 +30,7 @@ namespace iox_sample_app.Controllers
                 var response = await _apiService.CreateAccount(request);
 
                 if (response.status == "Success")
-                    return Ok(JsonConvert.DeserializeObject<InstructionResponse>(response.result.ToString()));
+                    return Ok(response);
                 else
                     return BadRequest(response.errors);
             }
@@ -39,6 +39,41 @@ namespace iox_sample_app.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet("SendAccountEmailInvites")]
+        public async Task<IActionResult> SendAccountEmailInvites()
+        {
+            try
+            {
+                var request = new AccountInviteTokenRequest()
+                {
+                    referenceId = "uniqueReferenceForThisRequest",
+                    accountReference = "myAccountReferenceUniqueToMyBusinessAccount",
+                    accountInvites = new List<AccountInvite>()
+                    {
+                        new AccountInvite()
+                        {
+                            email = "test@gmail.com",
+                            firstName = "tester",
+                            lastName = "test"
+                        }
+                    }
+                };
+                var response = await _apiService.AccountEmailInvites(request);
+
+                if (response.status == "Success")
+                    return Ok(response);
+                else
+                    return BadRequest(response.errors);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
+
+
+
 
         private CreateAccountRequest privateAccount()
         {

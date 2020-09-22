@@ -117,6 +117,29 @@ namespace iox_sample_app.Services
             }
         }
 
+        public async Task<ResponseObject> AccountEmailInvites(AccountInviteTokenRequest request)
+        {
+            try
+            {
+                await validateTokenAsync();
+                var result = await createClientWithAuthorizationHeader().PostAsync("accounts/SendAccountInvites", new StringContent(
+                    JsonConvert.SerializeObject(request),
+                    Encoding.UTF8, "application/json"));
+
+                if (result.IsSuccessStatusCode)
+                {
+                    var response = JsonConvert.DeserializeObject<ResponseObject>(await result.Content.ReadAsStringAsync());
+                    return response;
+                }
+
+                return null;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
         public async Task<ResponseObject> ConfigureEndPoint(EndPointRequest request)
         {
             try
