@@ -95,6 +95,10 @@ namespace iox_sample_app.Services
                 return "nominations/CreateNominatedDriver";
             else if (requestType == RequestTypes.UpdateNominationDriver)
                 return "nominations/UpdateNominatedDriver";
+            else if (requestType == RequestTypes.CreateVehicle)
+                return "vehicles/CreateVehicle";
+            else if (requestType == RequestTypes.UpdateVehicle)
+                return "vehicles/UpdateVehicle";
             else
                 throw new Exception("Invalid endpoint url");
         }
