@@ -3,11 +3,11 @@ http://redocly.github.io/redoc/?url=https://stagingintegration.ioxfleet.co.za/sw
 
 ## Iox Settings Configuration
 Iox will provide you with:
-    1. tenant_id
-    2. username
-    3. api-key
+1. tenant_id
+2. username
+3. api-key
 
-Open the iox_sample_application's appsettings.json file and replace the tenant_id, username, and api-key provided by IOX.
+Open the iox_sample_application's appsettings.json file and replace the tenant_id, username, and api-key.
 
 
 ## Endpoint Configuration
