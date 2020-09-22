@@ -30,7 +30,7 @@ namespace iox_sample_app.Controllers
             var response = await _apiService.ConfigureEndPoint(new EndPointRequest()
             {
                 sharedkey = "YourSharedKeyProvidedWhenSettingUpEndpoint",
-                url = "{Your_ngrok_url}/endpoint/response"
+                url = "https://34b76a7ecf53.ngrok.io/endpoint/response"
             });
 
             if (response.status == "Success")
@@ -64,8 +64,6 @@ namespace iox_sample_app.Controllers
                 {
                     if (response.status == "Success")
                     {
-                        var instructionResponse =
-                            JsonConvert.DeserializeObject<InstructionResponse>(response.result.ToString());
                         //TODO your logic
                     }
                     else

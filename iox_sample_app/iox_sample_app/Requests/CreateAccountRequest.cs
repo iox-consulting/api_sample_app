@@ -7,6 +7,13 @@ namespace iox_sample_app.Requests
 {
     public class CreateAccountRequest
     {
+        public CreateAccountRequest()
+        {
+            brn = new List<BRN>();
+            vehicles = new List<Vehicles>();
+            Individuals = new List<Individual>();
+            departments = new List<Department>();
+        }
         [Required]
         public string referenceId { get; set; } // unique id that the 3rd party can use to identify the account with
 
