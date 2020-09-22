@@ -31,7 +31,7 @@ namespace iox_sample_app.Controllers
             var response = await _apiService.Post(new EndPointRequest()
             {
                 sharedkey = "YourSharedKeyProvidedWhenSettingUpEndpoint",
-                url = "https://34b76a7ecf53.ngrok.io/endpoint/response"
+                url = "{Your_ngrok_url}/endpoint/response"
             },RequestTypes.ConfigureEndpoint);
 
             if (response.status == "Success")
