@@ -30,7 +30,11 @@ namespace iox_sample_app.Requests.Enums
 
         [Description("Update Individual")]
         UpdateIndividual = 9,
+
         [Description("Create Nomination Driver")]
-        CreateNominationDriver = 10
+        CreateNominationDriver = 10,
+
+        [Description("Update Nomination Driver")]
+        UpdateNominationDriver = 11
     }
 }

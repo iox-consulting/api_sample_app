@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace iox_sample_app.Requests
 {
@@ -18,6 +19,7 @@ namespace iox_sample_app.Requests
 
     public class NominationTargetPersonalDetails
     {
+        [MaxLength(3)]
         public string Initials { get; set; } //required
         public string FullName { get; set; } //required
         public string Surname { get; set; } //required

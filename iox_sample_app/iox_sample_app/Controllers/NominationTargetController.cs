@@ -71,5 +71,48 @@ namespace iox_sample_app.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet("UpdateNominationDriver")]
+        public async Task<IActionResult> UpdateNominationDriver()
+        {
+            try
+            {
+                var response = await _apiService.Post(new NominationTargetRequest()
+                {
+                    accountReference = "myAccountReferenceUniqueToMyBusinessAccount",
+                    referenceId = "uniqueReferenceForRequestUpdated",
+                    AddressDetails = new NominationTargetAddressDetails()
+                    {
+                        City = "Johannesburg updated",
+                        Country = "South Africa updated",
+                        PostalCode = "1234",
+                        StreetName = "Old Johannesburg road Updated",
+                        StreetNo = "123"
+                    },
+                    PersonalDetails = new NominationTargetPersonalDetails()
+                    {
+                        IdType = (int)NominationIdTypes.SouthAfricanId,
+                        IdNumber = "9407024011089",
+                        ContactNumber = "0826547855",
+                        CountryOfIssue = "South Africa",
+                        Email = "test@gmail.com",
+                        FullName = "My Nomination Target updated",
+                        Gender = "Male",
+                        Initials = "TT",
+                        Surname = "Nomination Target updated"
+                    },
+                    Documents = new List<NominationTargetDocument>()
+                }, RequestTypes.UpdateNominationDriver);
+
+                if (response.status == "Success")
+                    return Ok(response);
+                else
+                    return BadRequest(response.errors);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
     }
 }
