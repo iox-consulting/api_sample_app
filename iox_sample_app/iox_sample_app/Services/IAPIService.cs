@@ -13,5 +13,7 @@ namespace iox_sample_app.Services
         Task<ResponseObject> AccountEmailInvites(AccountInviteTokenRequest request);
         Task<ResponseObject> RequestAccountOTP(AccountOTPRequest request);
 
+        Task<ResponseObject> CreateDepartment(DepartmentRequest request);
+
     }
 }

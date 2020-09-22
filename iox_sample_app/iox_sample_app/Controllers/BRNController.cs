@@ -1,8 +1,6 @@
 ﻿using iox_sample_app.Requests;
-using iox_sample_app.Responses;
 using iox_sample_app.Services;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 
@@ -33,14 +31,9 @@ namespace iox_sample_app.Controllers
                 });
 
                 if (response.status == "Success")
-                {
-                    var requestId = JsonConvert.DeserializeObject<InstructionResponse>(response.result.ToString());
-                }
+                    return Ok(response);
                 else
-                {
-                    var errors = response.errors;
-                }
-                return Ok(response);
+                    return BadRequest(response.errors);
             }
             catch (Exception e)
             {
@@ -62,14 +55,9 @@ namespace iox_sample_app.Controllers
                 });
 
                 if (response.status == "Success")
-                {
-                    var requestId = JsonConvert.DeserializeObject<InstructionResponse>(response.result.ToString());
-                }
+                    return Ok(response);
                 else
-                {
-                    var errors = response.errors;
-                }
-                return Ok(response);
+                    return BadRequest(response.errors);
             }
             catch (Exception e)
             {
