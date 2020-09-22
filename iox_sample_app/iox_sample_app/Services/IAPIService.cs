@@ -11,6 +11,7 @@ namespace iox_sample_app.Services
         Task<ResponseObject> ConfigureEndPoint(EndPointRequest request);
         Task<ResponseObject> CreateAccount(CreateAccountRequest request);
         Task<ResponseObject> AccountEmailInvites(AccountInviteTokenRequest request);
+        Task<ResponseObject> RequestAccountOTP(AccountOTPRequest request);
 
     }
 }

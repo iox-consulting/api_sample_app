@@ -72,8 +72,28 @@ namespace iox_sample_app.Controllers
             }
         }
 
+        [HttpGet("RequestAccountOTP")]
+        public async Task<IActionResult> RequestAccountOTP()
+        {
+            try
+            {
+                var request = new AccountOTPRequest()
+                {
+                    referenceId = "uniqueReferenceForThisRequest",
+                    accountReference = "myAccountReferenceUniqueToMyBusinessAccount",
+                };
+                var response = await _apiService.RequestAccountOTP(request);
 
-
+                if (response.status == "Success")
+                    return Ok(response);
+                else
+                    return BadRequest(response.errors);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
 
         private CreateAccountRequest privateAccount()
         {
