@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace iox_sample_app.Requests
+namespace iox_sample_app.Requests.Enums
 {
-    public enum VehicleTypes
+    public enum VehicleCategories
     {
         [Description("Motor cycle / Motor tricycle / Motor quadracycle")]
         MotorCycle = 1,

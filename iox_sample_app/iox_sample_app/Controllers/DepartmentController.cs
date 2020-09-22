@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using iox_sample_app.Requests;
+using iox_sample_app.Requests.Enums;
 using iox_sample_app.Responses;
 using iox_sample_app.Services;
 using Microsoft.AspNetCore.Http;
@@ -26,12 +27,12 @@ namespace iox_sample_app.Controllers
         {
             try
             {
-                var response = await _apiService.CreateDepartment(new DepartmentRequest()
+                var response = await _apiService.Post(new DepartmentRequest()
                 {
                     accountReference = "myAccountReferenceUniqueToMyBusinessAccount",
                     name = "New department",
                     referenceId = "00012341"
-                });
+                },RequestTypes.CreateDepartment);
 
                 if (response.status == "Success")
                     return Ok(response);

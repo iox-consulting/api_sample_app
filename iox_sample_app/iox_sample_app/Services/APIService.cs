@@ -8,6 +8,7 @@ using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using iox_sample_app.Requests.Enums;
 
 namespace iox_sample_app.Services
 {
@@ -47,13 +48,12 @@ namespace iox_sample_app.Services
                 throw e;
             }
         }
-
-        public async Task<ResponseObject> CreateBRN(BRNRequest request)
+        public async Task<ResponseObject> Post<T>(T request, RequestTypes requestType)
         {
             try
             {
                 await validateTokenAsync();
-                var result = await createClientWithAuthorizationHeader().PostAsync("brn/createBRN", new StringContent(
+                var result = await createClientWithAuthorizationHeader().PostAsync(mapUri(requestType), new StringContent(
                     JsonConvert.SerializeObject(request),
                     Encoding.UTF8, "application/json"));
 
@@ -71,142 +71,30 @@ namespace iox_sample_app.Services
             }
         }
 
-        public async Task<ResponseObject> UpdateBRN(BRNRequest request)
+        private string mapUri(RequestTypes requestType)
         {
-            try
-            {
-                await validateTokenAsync();
-                var result = await createClientWithAuthorizationHeader().PostAsync("brn/updateBRN", new StringContent(
-                    JsonConvert.SerializeObject(request),
-                    Encoding.UTF8, "application/json"));
-
-                if (result.IsSuccessStatusCode)
-                {
-                    var response = JsonConvert.DeserializeObject<ResponseObject>(await result.Content.ReadAsStringAsync());
-                    return response;
-                }
-
-                return null;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
-
-        public async Task<ResponseObject> CreateAccount(CreateAccountRequest request)
-        {
-            try
-            {
-                await validateTokenAsync();
-                var result = await createClientWithAuthorizationHeader().PostAsync("accounts/createAccount", new StringContent(
-                    JsonConvert.SerializeObject(request),
-                    Encoding.UTF8, "application/json"));
-
-                if (result.IsSuccessStatusCode)
-                {
-                    var response = JsonConvert.DeserializeObject<ResponseObject>(await result.Content.ReadAsStringAsync());
-                    return response;
-                }
-
-                return null;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
-
-        public async Task<ResponseObject> AccountEmailInvites(AccountInviteTokenRequest request)
-        {
-            try
-            {
-                await validateTokenAsync();
-                var result = await createClientWithAuthorizationHeader().PostAsync("accounts/SendAccountInvites", new StringContent(
-                    JsonConvert.SerializeObject(request),
-                    Encoding.UTF8, "application/json"));
-
-                if (result.IsSuccessStatusCode)
-                {
-                    var response = JsonConvert.DeserializeObject<ResponseObject>(await result.Content.ReadAsStringAsync());
-                    return response;
-                }
-
-                return null;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
-
-        public async Task<ResponseObject> RequestAccountOTP(AccountOTPRequest request)
-        {
-            try
-            {
-                await validateTokenAsync();
-                var result = await createClientWithAuthorizationHeader().PostAsync("accounts/RequestAccountOTP", new StringContent(
-                    JsonConvert.SerializeObject(request),
-                    Encoding.UTF8, "application/json"));
-
-                if (result.IsSuccessStatusCode)
-                {
-                    var response = JsonConvert.DeserializeObject<ResponseObject>(await result.Content.ReadAsStringAsync());
-                    return response;
-                }
-
-                return null;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
-
-        public async Task<ResponseObject> CreateDepartment(DepartmentRequest request)
-        {
-            try
-            {
-                await validateTokenAsync();
-                var result = await createClientWithAuthorizationHeader().PostAsync("departments/CreateDepartment", new StringContent(
-                    JsonConvert.SerializeObject(request),
-                    Encoding.UTF8, "application/json"));
-
-                if (result.IsSuccessStatusCode)
-                {
-                    var response = JsonConvert.DeserializeObject<ResponseObject>(await result.Content.ReadAsStringAsync());
-                    return response;
-                }
-
-                return null;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
-
-        public async Task<ResponseObject> ConfigureEndPoint(EndPointRequest request)
-        {
-            try
-            {
-                await validateTokenAsync();
-                var result = await createClientWithAuthorizationHeader().PostAsync("endpoint/SetupEndpoint", new StringContent(
-                    JsonConvert.SerializeObject(request),
-                    Encoding.UTF8, "application/json"));
-
-                if (result.IsSuccessStatusCode)
-                {
-                    var response = JsonConvert.DeserializeObject<ResponseObject>(await result.Content.ReadAsStringAsync());
-                    return response;
-                }
-
-                return null;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
+            if (requestType == RequestTypes.CreateBrn)
+                return "brn/createBRN";
+            else if (requestType == RequestTypes.UpdateBrn)
+                return "brn/updateBRN";
+            else if (requestType == RequestTypes.CreateAccount)
+                return "accounts/createAccount";
+            else if (requestType == RequestTypes.AccountEmailInvites)
+                return "accounts/SendAccountInvites";
+            else if (requestType == RequestTypes.RequestAccountOTP)
+                return "accounts/RequestAccountOTP";
+            else if (requestType == RequestTypes.CreateDepartment)
+                return "departments/CreateDepartment";
+            else if (requestType == RequestTypes.CreateIndividual)
+                return "individuals/CreateIndividual";
+            else if (requestType == RequestTypes.UpdateIndividual)
+                return "individuals/UpdateIndividual";
+            else if (requestType == RequestTypes.ConfigureEndpoint)
+                return "endpoint/SetupEndpoint";
+            else if (requestType == RequestTypes.CreateNominationDriver)
+                return "nominations/CreateNominatedDriver";
+            else
+                throw new Exception("Invalid endpoint url");
         }
 
         private HttpClient createClientWithAuthorizationHeader()

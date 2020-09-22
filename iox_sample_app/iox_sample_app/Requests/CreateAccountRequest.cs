@@ -103,7 +103,7 @@ namespace iox_sample_app.Requests
         public DateTime? licenseExpiryDate { get; set; }
 
         [Required]
-        public int categoryId { get; set; } // Vehicle Types (Requests/VehicleTypes.cs)
+        public int categoryId { get; set; } // Vehicle Types (Requests/VehicleCategories.cs)
 
         [Required]
         public int tare { get; set; }

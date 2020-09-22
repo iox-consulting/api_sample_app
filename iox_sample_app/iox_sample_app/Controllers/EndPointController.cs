@@ -8,6 +8,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using iox_sample_app.Requests.Enums;
 
 namespace iox_sample_app.Controllers
 {
@@ -27,11 +28,11 @@ namespace iox_sample_app.Controllers
         [HttpGet("Configure")]
         public async Task<IActionResult> Configure()
         {
-            var response = await _apiService.ConfigureEndPoint(new EndPointRequest()
+            var response = await _apiService.Post(new EndPointRequest()
             {
                 sharedkey = "YourSharedKeyProvidedWhenSettingUpEndpoint",
                 url = "https://34b76a7ecf53.ngrok.io/endpoint/response"
-            });
+            },RequestTypes.ConfigureEndpoint);
 
             if (response.status == "Success")
                 return Ok(JsonConvert.DeserializeObject<EndPointResponse>(response.result.ToString()));

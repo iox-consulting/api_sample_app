@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using iox_sample_app.Requests.Enums;
 
 namespace iox_sample_app.Controllers
 {
@@ -27,7 +28,7 @@ namespace iox_sample_app.Controllers
             {
                 //var request = privateAccount();
                 var request = businessAccount();
-                var response = await _apiService.CreateAccount(request);
+                var response = await _apiService.Post(request,RequestTypes.CreateAccount);
 
                 if (response.status == "Success")
                     return Ok(response);
@@ -59,7 +60,7 @@ namespace iox_sample_app.Controllers
                         }
                     }
                 };
-                var response = await _apiService.AccountEmailInvites(request);
+                var response = await _apiService.Post(request,RequestTypes.AccountEmailInvites);
 
                 if (response.status == "Success")
                     return Ok(response);
@@ -82,7 +83,7 @@ namespace iox_sample_app.Controllers
                     referenceId = "uniqueReferenceForThisRequest",
                     accountReference = "myAccountReferenceUniqueToMyBusinessAccount",
                 };
-                var response = await _apiService.RequestAccountOTP(request);
+                var response = await _apiService.Post(request,RequestTypes.RequestAccountOTP);
 
                 if (response.status == "Success")
                     return Ok(response);
@@ -125,7 +126,7 @@ namespace iox_sample_app.Controllers
                     new Vehicles()
                     {
                         IndividualIdNumber = "9506035011089",
-                        categoryId = (int) VehicleTypes.LightPassenger,
+                        categoryId = (int) VehicleCategories.LightPassenger,
                         colour = "white",
                         licenseDiscNumber = "5596685221",
                         licenseExpiryDate = new DateTime(2020,09,23),
@@ -171,7 +172,7 @@ namespace iox_sample_app.Controllers
                     new Vehicles()
                     {
                         brn = "4784473447",
-                        categoryId = (int) VehicleTypes.HeavyPassenger,
+                        categoryId = (int) VehicleCategories.HeavyPassenger,
                         colour = "white",
                         licenseDiscNumber = "3396685221",
                         licenseExpiryDate = new DateTime(2020,09,23),
