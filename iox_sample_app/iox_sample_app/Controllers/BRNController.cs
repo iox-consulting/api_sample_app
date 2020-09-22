@@ -19,8 +19,8 @@ namespace iox_sample_app.Controllers
             _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpGet("CreateBRN")]
+        public async Task<IActionResult> CreateBRN()
         {
             try
             {
@@ -30,6 +30,35 @@ namespace iox_sample_app.Controllers
                     brn = "123412341123",
                     individualIdNumber = "9407025011089",
                     referenceId = "00031234"
+                });
+
+                if (response.status == "Success")
+                {
+                    var requestId = JsonConvert.DeserializeObject<InstructionResponse>(response.result.ToString());
+                }
+                else
+                {
+                    var errors = response.errors;
+                }
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("UpdateBRN")]
+        public async Task<IActionResult> UpdateBRN()
+        {
+            try
+            {
+                var response = await _apiService.UpdateBRN(new BRNRequest()
+                {
+                    accountReference = "00402176*001",
+                    brn = "31241241",
+                    individualIdNumber = "9407025011089",
+                    referenceId = "000123441"
                 });
 
                 if (response.status == "Success")

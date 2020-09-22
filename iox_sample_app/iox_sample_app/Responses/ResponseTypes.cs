@@ -7,9 +7,6 @@ namespace iox_sample_app.Responses
         [Description("Instruction Status Update")]
         InstructionStatusUpdate = 1,
 
-        [Description("Quote Created")]
-        QuoteCreated = 2,
-
         [Description("Account OTP")]
         AccountOtp = 3
     }

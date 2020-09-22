@@ -73,19 +73,6 @@ namespace iox_sample_app.Controllers
                         var errors = response.errors;
                     }
                 }
-                else if (response.ResponseType == (int)ResponseTypes.QuoteCreated)
-                {
-                    if (response.status == "Success")
-                    {
-                        var quote =
-                            JsonConvert.DeserializeObject<Quote>(response.result.ToString());
-                        //TODO your logic
-                    }
-                    else
-                    {
-                        var errors = response.errors;
-                    }
-                }
                 else
                 {
                     return BadRequest("Invalid response type");
