@@ -20,11 +20,14 @@ namespace iox_sample_app.Controllers
             _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
         }
 
+
+        // This request creates a new nomination driver
         [HttpGet("CreateNominationDriver")]
         public async Task<IActionResult> CreateNominationDriver()
         {
             try
             {
+                //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
                 var response = await _apiService.Post(new NominationTargetRequest() 
                 {
                     accountReference = "myAccountReferenceUniqueToMyBusinessAccount",
@@ -72,11 +75,13 @@ namespace iox_sample_app.Controllers
             }
         }
 
+        // This request updates an existing nomination driver
         [HttpGet("UpdateNominationDriver")]
         public async Task<IActionResult> UpdateNominationDriver()
         {
             try
             {
+                //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
                 var response = await _apiService.Post(new NominationTargetRequest()
                 {
                     accountReference = "myAccountReferenceUniqueToMyBusinessAccount",

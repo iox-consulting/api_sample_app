@@ -20,11 +20,13 @@ namespace iox_sample_app.Controllers
             _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
         }
 
+        // This request creates a new individual
         [HttpGet("CreateIndividual")]
         public async Task<IActionResult> CreateIndividual()
         {
             try
             {
+                //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
                 var response = await _apiService.Post(new IndividualRequest()
                 {
                    accountReference = "myAccountReferenceUniqueToJacobsAccount",
@@ -47,12 +49,13 @@ namespace iox_sample_app.Controllers
                 return BadRequest();
             }
         }
-
+        //This request updates an existing individual
         [HttpGet("UpdateIndividual")]
         public async Task<IActionResult> UpdateIndividual()
         {
             try
             {
+                //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
                 var response = await _apiService.Post(new IndividualRequest()
                 {
                     accountReference = "myAccountReferenceUniqueToJacobsAccount",

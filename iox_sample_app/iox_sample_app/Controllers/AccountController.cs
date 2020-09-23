@@ -21,6 +21,7 @@ namespace iox_sample_app.Controllers
             _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
         }
 
+        //This request creates a new account
         [HttpGet("CreateAccount")]
         public async Task<IActionResult> CreateAccount()
         {
@@ -40,12 +41,14 @@ namespace iox_sample_app.Controllers
                 return BadRequest();
             }
         }
-
+        //This request Sends an invite email to all users provided
         [HttpGet("SendAccountEmailInvites")]
         public async Task<IActionResult> SendAccountEmailInvites()
         {
             try
             {
+
+                //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
                 var request = new AccountInviteTokenRequest()
                 {
                     referenceId = "uniqueReferenceForThisRequest",
@@ -73,11 +76,13 @@ namespace iox_sample_app.Controllers
             }
         }
 
+        //This request requests an account OTP 
         [HttpGet("RequestAccountOTP")]
         public async Task<IActionResult> RequestAccountOTP()
         {
             try
             {
+                //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
                 var request = new AccountOTPRequest()
                 {
                     referenceId = "uniqueReferenceForThisRequest",
@@ -98,6 +103,7 @@ namespace iox_sample_app.Controllers
 
         private CreateAccountRequest privateAccount()
         {
+            //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
             return new CreateAccountRequest()
             {
                 IdentificationNumber = "9506035011089",
@@ -144,6 +150,7 @@ namespace iox_sample_app.Controllers
 
         private CreateAccountRequest businessAccount()
         {
+            //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
             var request = new CreateAccountRequest()
             {
                 accountContactNumber = "0126541859",

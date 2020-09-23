@@ -22,11 +22,14 @@ namespace iox_sample_app.Controllers
             _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
         }
 
+        //This request creates a new department
+
         [HttpGet("CreateDepartment")]
         public async Task<IActionResult> CreateDepartment()
         {
             try
             {
+                //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
                 var response = await _apiService.Post(new DepartmentRequest()
                 {
                     accountReference = "myAccountReferenceUniqueToMyBusinessAccount",

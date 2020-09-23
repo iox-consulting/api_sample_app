@@ -18,11 +18,13 @@ namespace iox_sample_app.Controllers
             _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
         }
 
+        //This request creates a new BRN for your business account
         [HttpGet("CreateBRN")]
         public async Task<IActionResult> CreateBRN()
         {
             try
             {
+                //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
                 var response = await _apiService.Post(new BRNRequest()
                 {
                     accountReference = "00402176*001",
@@ -41,12 +43,13 @@ namespace iox_sample_app.Controllers
                 return BadRequest();
             }
         }
-
+        //This request updates an existing BRN for your business account
         [HttpGet("UpdateBRN")]
         public async Task<IActionResult> UpdateBRN()
         {
             try
             {
+                //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
                 var response = await _apiService.Post(new BRNRequest()
                 {
                     accountReference = "00402176*001",

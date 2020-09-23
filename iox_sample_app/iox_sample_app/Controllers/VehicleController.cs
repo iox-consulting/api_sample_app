@@ -20,11 +20,14 @@ namespace iox_sample_app.Controllers
             _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
         }
 
+
+        //This request creates a new vehicle
         [HttpGet("CreateVehicle")]
         public async Task<IActionResult> CreateVehicle()
         {
             try
             {
+                //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
                 var request = new VehicleRequest()
                 {
                     accountReference = "myAccountReferenceUniqueToMyBusinessAccount",
@@ -56,11 +59,13 @@ namespace iox_sample_app.Controllers
             }
         }
 
+        // This request updates an existing vehicle
         [HttpGet("UpdateVehicle")]
         public async Task<IActionResult> UpdateVehicle()
         {
             try
             {
+                //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
                 var request = new VehicleRequest()
                 {
                     accountReference = "myAccountReferenceUniqueToMyBusinessAccount",
