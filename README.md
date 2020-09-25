@@ -8,7 +8,7 @@ https://github.com/iox-consulting/api_sample_app/blob/master/iox_sample_app/docs
 ## IOX API Swagger: 
 http://redocly.github.io/redoc/?url=https://stagingintegration.ioxfleet.co.za/swagger/v1/swagger.json
 
-## Iox Settings Configuration
+## IOX Settings Configuration
 Iox will provide you with:
 1. tenant_id
 2. username
