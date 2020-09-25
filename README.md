@@ -1,6 +1,6 @@
 # IOX API sample application
 
-The IOX API is an asynchronous instruction processor, every request is stored as an instruction. Instructions are added to a queue, the IOX Core application is responsible for processing these instructions. Once an instruction is processed the result will be POSTED to a webhook.
+The IOX API is an asynchronous instruction processor, instructions are added to a queue and the IOX Core application is responsible for processing these instructions. Once an instruction is processed the result will be POSTED to a webhook.
 
 ## IOX API Document:
 https://github.com/iox-consulting/api_sample_app/blob/master/iox_sample_app/docs/IOX%20API.pdf
