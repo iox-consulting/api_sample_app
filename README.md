@@ -15,6 +15,7 @@ Iox will provide you with:
 3. api-key
 
 Open the iox_sample_application's appsettings.json file and replace the tenant_id, username, and api-key.
+
 Please note: the sample application is configured to point to the IOX staging environment.
 
 ## Endpoint Configuration
