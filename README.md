@@ -22,7 +22,7 @@ Please note: the sample application is configured to point to the IOX staging en
 
 To receive updates from the iox api you'll need to configure a webhook.
 
-Test Webhook Setup:
+ngrok setup to receive Webhook calls locally:
 1. Download ngrok (https://ngrok.com/download)
 2. Run ngrok.exe 
 3. In the command line window run ngrok http 5008 the iox_sample_app listens on port 5008.
