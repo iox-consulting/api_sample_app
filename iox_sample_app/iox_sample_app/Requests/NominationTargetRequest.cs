@@ -48,6 +48,5 @@ namespace iox_sample_app.Requests
         public string DocumentBase64String { get; set; } //required
         public int DocumentType { get; set; } //required   | NominationDocumentTypes.cs
         public DateTime? ExpiryDate { get; set; }
-        public string Reference { get; set; }
     }
 }
