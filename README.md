@@ -1,4 +1,11 @@
-# IOX 3rd party API Documentation: 
+#IOX API sample application
+
+The IOX API is an asynchronous instruction processor, every request is stored as an instruction. Instructions are added to a queue, the IOX Core application is responsible for processing these instructions. Once an instruction is processed the result will be POSTED to a webhook.
+
+## IOX API Document:
+https://github.com/iox-consulting/api_sample_app/blob/master/iox_sample_app/docs/IOX%20API.pdf
+
+## IOX API Swagger: 
 http://redocly.github.io/redoc/?url=https://stagingintegration.ioxfleet.co.za/swagger/v1/swagger.json
 
 ## Iox Settings Configuration
