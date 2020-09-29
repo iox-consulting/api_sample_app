@@ -5,6 +5,7 @@ using iox_sample_app.Services;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -67,6 +68,18 @@ namespace iox_sample_app.Controllers
                 {
                     if (response.status == "Success")
                     {
+                        //TODO your logic
+                    }
+                    else
+                    {
+                        var errors = response.errors;
+                    }
+                }
+                else if (response.ResponseType == (int)ResponseTypes.NewFineCount)
+                {
+                    if (response.status == "Success")
+                    {
+                        var newFineCounts = JsonConvert.DeserializeObject<List<NewFineCountResponse>>(response.result.ToString());
                         //TODO your logic
                     }
                     else

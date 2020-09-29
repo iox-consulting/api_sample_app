@@ -8,6 +8,9 @@ namespace iox_sample_app.Responses
         InstructionStatusUpdate = 1,
 
         [Description("Account OTP")]
-        AccountOtp = 3
+        AccountOtp = 3,
+
+        [Description("New Fine Count")]
+        NewFineCount = 4
     }
 }
