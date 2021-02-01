@@ -96,5 +96,55 @@ namespace iox_sample_app.Controllers
                 return BadRequest();
             }
         }
+        
+        [HttpGet("ActivateVehicle")]
+        public async Task<IActionResult> ActivateVehicle()
+        {
+            try
+            {
+                //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
+                var request = new ActivateVehicleRequest()
+                {
+                    referenceId = "uniqueReferenceForThisRequest",
+                    accountReference = "myAccountReferenceUniqueToMyBusinessAccount",
+                    vehicleReference = "myVehicleReferenceUniqueToMyBusinessAccount"
+                };
+                var response = await _apiService.Post(request, RequestTypes.ActivateVehicle);
+
+                if (response.status == "Success")
+                    return Ok(response);
+                else
+                    return BadRequest(response.errors);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
+        
+        [HttpGet("DeactivateVehicle")]
+        public async Task<IActionResult> DeactivateVehicle()
+        {
+            try
+            {
+                //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
+                var request = new ActivateVehicleRequest()
+                {
+                    referenceId = "uniqueReferenceForThisRequest",
+                    accountReference = "myAccountReferenceUniqueToMyBusinessAccount",
+                    vehicleReference = "myVehicleReferenceUniqueToMyBusinessAccount"
+                };
+                var response = await _apiService.Post(request, RequestTypes.DeactivateVehicle);
+
+                if (response.status == "Success")
+                    return Ok(response);
+                else
+                    return BadRequest(response.errors);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

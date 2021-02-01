@@ -73,34 +73,26 @@ namespace iox_sample_app.Services
 
         private string mapUri(RequestTypes requestType)
         {
-            if (requestType == RequestTypes.CreateBrn)
-                return "brn/createBRN";
-            else if (requestType == RequestTypes.UpdateBrn)
-                return "brn/updateBRN";
-            else if (requestType == RequestTypes.CreateAccount)
-                return "accounts/createAccount";
-            else if (requestType == RequestTypes.AccountEmailInvites)
-                return "accounts/SendAccountInvites";
-            else if (requestType == RequestTypes.RequestAccountOTP)
-                return "accounts/RequestAccountOTP";
-            else if (requestType == RequestTypes.CreateDepartment)
-                return "departments/CreateDepartment";
-            else if (requestType == RequestTypes.CreateIndividual)
-                return "individuals/CreateIndividual";
-            else if (requestType == RequestTypes.UpdateIndividual)
-                return "individuals/UpdateIndividual";
-            else if (requestType == RequestTypes.ConfigureEndpoint)
-                return "endpoint/SetupEndpoint";
-            else if (requestType == RequestTypes.CreateNominationDriver)
-                return "nominations/CreateNominatedDriver";
-            else if (requestType == RequestTypes.UpdateNominationDriver)
-                return "nominations/UpdateNominatedDriver";
-            else if (requestType == RequestTypes.CreateVehicle)
-                return "vehicles/CreateVehicle";
-            else if (requestType == RequestTypes.UpdateVehicle)
-                return "vehicles/UpdateVehicle";
-            else
-                throw new Exception("Invalid endpoint url");
+            return requestType switch
+            {
+                RequestTypes.CreateBrn => "brn/createBRN",
+                RequestTypes.UpdateBrn => "brn/updateBRN",
+                RequestTypes.CreateAccount => "accounts/createAccount",
+                RequestTypes.AccountEmailInvites => "accounts/SendAccountInvites",
+                RequestTypes.RequestAccountOTP => "accounts/RequestAccountOTP",
+                RequestTypes.CreateDepartment => "departments/CreateDepartment",
+                RequestTypes.CreateIndividual => "individuals/CreateIndividual",
+                RequestTypes.UpdateIndividual => "individuals/UpdateIndividual",
+                RequestTypes.ConfigureEndpoint => "endpoint/SetupEndpoint",
+                RequestTypes.CreateNominationDriver => "nominations/CreateNominatedDriver",
+                RequestTypes.UpdateNominationDriver => "nominations/UpdateNominatedDriver",
+                RequestTypes.CreateVehicle => "vehicles/CreateVehicle",
+                RequestTypes.UpdateVehicle => "vehicles/UpdateVehicle",
+                RequestTypes.CreateDealerStock => "DealerStock/CreateDealerStockInstruction",
+                RequestTypes.ActivateVehicle => "vehicles/ActivateVehicle",
+                RequestTypes.DeactivateVehicle => "vehicles/DeactivateVehicle",
+                _ => throw new Exception("Invalid endpoint url")
+            };
         }
 
         private HttpClient createClientWithAuthorizationHeader()
