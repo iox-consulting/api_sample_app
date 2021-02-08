@@ -37,8 +37,8 @@ namespace iox_sample_app.Controllers
                     brnNumber = "mySelectedBrnNumberLinkTOMyBusinessAccount",
                     vehicleRegisterNumber = "DCP011H",
                     referenceId = "uniqueReferenceForThisRequest",
-                    preFilledNCODocument = await System.IO.File.ReadAllTextAsync(@"C:\My\Path\To\This\File\File1.txt"),
-                    vehiclePaidInFullLetterDocument = await System.IO.File.ReadAllTextAsync(@"C:\My\Path\To\This\File\File1.txt")
+                    preFilledNCODocument = await System.IO.File.ReadAllTextAsync(@"C:\My\Path\To\This\File\PreFilledNDCBase64.txt"),
+                    vehiclePaidInFullLetterDocument = await System.IO.File.ReadAllTextAsync(@"C:\My\Path\To\This\File\VehiclePaidInFullLetterBase64.txt")
                 },RequestTypes.CreateDealerStock);
 
                 if (response.status == "Success")
