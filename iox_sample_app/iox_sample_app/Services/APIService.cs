@@ -1,6 +1,7 @@
 ﻿using iox_sample_app.Helper;
 using iox_sample_app.Helper.Interfaces;
 using iox_sample_app.Requests;
+using iox_sample_app.Requests.Enums;
 using iox_sample_app.Responses;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -8,7 +9,6 @@ using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using iox_sample_app.Requests.Enums;
 
 namespace iox_sample_app.Services
 {
@@ -91,6 +91,9 @@ namespace iox_sample_app.Services
                 RequestTypes.CreateDealerStock => "DealerStock/CreateDealerStockInstruction",
                 RequestTypes.ActivateVehicle => "vehicles/ActivateVehicle",
                 RequestTypes.DeactivateVehicle => "vehicles/DeactivateVehicle",
+                RequestTypes.CreateQuote => "instructions/CreateQuote",
+                RequestTypes.UploadDocuments => "documents/UploadDocuments",
+
                 _ => throw new Exception("Invalid endpoint url")
             };
         }
@@ -98,7 +101,7 @@ namespace iox_sample_app.Services
         private HttpClient createClientWithAuthorizationHeader()
         {
             var client = _clientFactory.CreateClient("iox");
-            client.DefaultRequestHeaders.Add("Authorization",$"Bearer {_memoryTokenStore.GetAccessToken().token}");
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {_memoryTokenStore.GetAccessToken().token}");
             return client;
         }
 

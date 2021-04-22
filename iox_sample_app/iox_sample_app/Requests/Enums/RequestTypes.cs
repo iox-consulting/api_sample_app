@@ -37,6 +37,10 @@ namespace iox_sample_app.Requests.Enums
 
         [Description("Activate Vehicle")] ActivateVehicle = 15,
 
-        [Description("Deactivate Vehicle")] DeactivateVehicle = 16
+        [Description("Deactivate Vehicle")] DeactivateVehicle = 16,
+
+        [Description("Create Quote")] CreateQuote = 17,
+
+        [Description("Upload Documents")] UploadDocuments = 18
     }
 }

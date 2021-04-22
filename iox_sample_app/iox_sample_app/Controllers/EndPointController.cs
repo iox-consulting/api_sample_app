@@ -1,5 +1,6 @@
 ﻿using iox_sample_app.Helper.Interfaces;
 using iox_sample_app.Requests;
+using iox_sample_app.Requests.Enums;
 using iox_sample_app.Responses;
 using iox_sample_app.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using iox_sample_app.Requests.Enums;
 
 namespace iox_sample_app.Controllers
 {
@@ -35,7 +35,7 @@ namespace iox_sample_app.Controllers
             {
                 sharedkey = "YourSharedKeyProvidedWhenSettingUpEndpoint",
                 url = "{Your_ngrok_url}/endpoint/response"
-            },RequestTypes.ConfigureEndpoint);
+            }, RequestTypes.ConfigureEndpoint);
 
             if (response.status == "Success")
                 return Ok(JsonConvert.DeserializeObject<EndPointResponse>(response.result.ToString()));
@@ -80,6 +80,42 @@ namespace iox_sample_app.Controllers
                     if (response.status == "Success")
                     {
                         var newFineCounts = JsonConvert.DeserializeObject<List<NewFineCountResponse>>(response.result.ToString());
+                        //TODO your logic
+                    }
+                    else
+                    {
+                        var errors = response.errors;
+                    }
+                }
+                else if (response.ResponseType == (int)ResponseTypes.LicensingInstructionStatusUpdate)
+                {
+                    if (response.status == "Success")
+                    {
+                        var obj = JsonConvert.DeserializeObject<LicensingInstructionStatusUpdateResponse>(response.result.ToString());
+                        //TODO your logic
+                    }
+                    else
+                    {
+                        var errors = response.errors;
+                    }
+                }
+                else if (response.ResponseType == (int)ResponseTypes.DocumentsUploadResponse)
+                {
+                    if (response.status == "Success")
+                    {
+                        var obj = JsonConvert.DeserializeObject<List<DocumentUploadItemResponse>>(response.result.ToString());
+                        //TODO your logic
+                    }
+                    else
+                    {
+                        var errors = response.errors;
+                    }
+                }
+                else if (response.ResponseType == (int)ResponseTypes.QuoteCreated)
+                {
+                    if (response.status == "Success")
+                    {
+                        var obj = JsonConvert.DeserializeObject<QuoteCreatedResponse>(response.result.ToString());
                         //TODO your logic
                     }
                     else
