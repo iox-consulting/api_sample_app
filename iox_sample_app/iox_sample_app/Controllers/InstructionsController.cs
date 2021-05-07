@@ -31,15 +31,17 @@ namespace iox_sample_app.Controllers
                     Address = new CreateQuoteRequestAddress
                     {
                         City = "Pretoria",
-                        ContactEmail = "text@test.com",
-                        ContactNumber = "0224448788",
-                        ContactPerson = "Someone Interseting",
                         District = "Gauteng",
                         PostalCode = "3333",
-                        SecondaryContactNumber = "0228388383",
                         StreetName = "Wisteria Avenue",
                         StreetNumber = "33",
-                        Suburb = "Hennopsspark"
+                        Suburb = "Hennopsspark",
+                        AddressContacts = new System.Collections.Generic.List<CreateQuoteRequestAddressContact> { new CreateQuoteRequestAddressContact
+                        {
+                            ContactEmail = "test@test.com",
+                            ContactNumber = "0224448788",
+                            ContactPerson = "John Doe"
+                        } }
                     },
                     vehicleRegisterNumbers = new System.Collections.Generic.List<string>
                     {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace iox_sample_app.Requests
 {
@@ -21,9 +18,13 @@ namespace iox_sample_app.Requests
         public string District { get; set; }
         public string City { get; set; }
         public string PostalCode { get; set; }
+        public List<CreateQuoteRequestAddressContact> AddressContacts { get; set; } = new List<CreateQuoteRequestAddressContact>();
+    }
+
+    public class CreateQuoteRequestAddressContact
+    {
         public string ContactPerson { get; set; }
-        public string ContactEmail { get; set; }
         public string ContactNumber { get; set; }
-        public string SecondaryContactNumber { get; set; }
+        public string ContactEmail { get; set; }
     }
 }
