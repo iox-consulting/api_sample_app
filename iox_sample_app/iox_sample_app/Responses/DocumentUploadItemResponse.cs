@@ -11,6 +11,7 @@ namespace iox_sample_app.Responses
 
         public string ownerTypeName { get; set; }
 
+        public string documentOwnerIdentification { get; set; }
         public string ownerReference { get; set; }
         public bool expires { get; set; }
         public DateTime? expiryDate { get; set; }

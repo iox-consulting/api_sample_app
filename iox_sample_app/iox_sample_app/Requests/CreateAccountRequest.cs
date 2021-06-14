@@ -104,6 +104,8 @@ namespace iox_sample_app.Requests
 
         [Required]
         public int categoryId { get; set; } // Vehicle Types (Requests/VehicleCategories.cs)
+        [Required]
+        public int descriptionId { get; set; }
 
         [Required]
         public int tare { get; set; }

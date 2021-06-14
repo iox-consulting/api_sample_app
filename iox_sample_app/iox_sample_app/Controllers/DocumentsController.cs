@@ -35,7 +35,7 @@ namespace iox_sample_app.Controllers
                             documentType = (int) DocumentTypes.ProofOfAddress, // Proof of address
                             expires = true,
                             expiryDate = new DateTime(2023, 5, 3),
-                            ownerReference = "XfaQxVKfT8",
+                            documentOwnerIdentification = "XfaQxVKfT8",
                             ownerType   = (int) DocumentOwnerType.Brn // BRN
                         }
                     }
