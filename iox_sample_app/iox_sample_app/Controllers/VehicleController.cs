@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using iox_sample_app.Requests;
+﻿using iox_sample_app.Requests;
 using iox_sample_app.Requests.Enums;
 using iox_sample_app.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace iox_sample_app.Controllers
 {
@@ -44,7 +41,7 @@ namespace iox_sample_app.Controllers
                     model = "M3",
                     referenceId = "uniqueReferenceForRequest",
                     tare = 1200,
-                    licenseExpiryDate = new DateTime(2021,3,2)
+                    licenseExpiryDate = new DateTime(2021, 3, 2)
                 };
                 var response = await _apiService.Post(request, RequestTypes.CreateVehicle);
 
@@ -96,7 +93,7 @@ namespace iox_sample_app.Controllers
                 return BadRequest();
             }
         }
-        
+
         [HttpGet("ActivateVehicle")]
         public async Task<IActionResult> ActivateVehicle()
         {
@@ -121,7 +118,7 @@ namespace iox_sample_app.Controllers
                 return BadRequest();
             }
         }
-        
+
         [HttpGet("DeactivateVehicle")]
         public async Task<IActionResult> DeactivateVehicle()
         {

@@ -20,6 +20,8 @@ namespace iox_sample_app.Requests
 
         public int categoryId { get; set; }                     // VehicleCategories.cs
 
+        public int? descriptionId { get; set; }
+
         public int tare { get; set; }
 
         public string make { get; set; }
