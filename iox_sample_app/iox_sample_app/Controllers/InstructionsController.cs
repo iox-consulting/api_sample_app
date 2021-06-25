@@ -34,6 +34,7 @@ namespace iox_sample_app.Controllers
                         District = "Gauteng",
                         PostalCode = "3333",
                         StreetName = "Wisteria Avenue",
+                        DeliveryInstructions = "Leave at door",
                         StreetNumber = "33",
                         Suburb = "Hennopsspark",
                         AddressContacts = new System.Collections.Generic.List<CreateQuoteRequestAddressContact> { new CreateQuoteRequestAddressContact

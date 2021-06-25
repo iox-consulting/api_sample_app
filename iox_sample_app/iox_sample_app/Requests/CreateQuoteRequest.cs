@@ -18,6 +18,7 @@ namespace iox_sample_app.Requests
         public string District { get; set; }
         public string City { get; set; }
         public string PostalCode { get; set; }
+        public string DeliveryInstructions { get; set; }
         public List<CreateQuoteRequestAddressContact> AddressContacts { get; set; } = new List<CreateQuoteRequestAddressContact>();
     }
 
