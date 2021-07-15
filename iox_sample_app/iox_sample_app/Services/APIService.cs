@@ -71,6 +71,29 @@ namespace iox_sample_app.Services
             }
         }
 
+        public async Task<R> Post<T, R>(T request, RequestTypes requestType)
+        {
+            try
+            {
+                await validateTokenAsync();
+                var result = await createClientWithAuthorizationHeader().PostAsync(mapUri(requestType), new StringContent(
+                    JsonConvert.SerializeObject(request),
+                    Encoding.UTF8, "application/json"));
+
+                if (result.IsSuccessStatusCode)
+                {
+                    var response = JsonConvert.DeserializeObject<R>(await result.Content.ReadAsStringAsync());
+                    return response;
+                }
+
+                return default(R);
+            }
+            catch (Exception e)
+            {
+                return default(R);
+            }
+        }
+
         private string mapUri(RequestTypes requestType)
         {
             return requestType switch
