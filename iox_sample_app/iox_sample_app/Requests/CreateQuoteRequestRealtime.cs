@@ -7,6 +7,9 @@ namespace iox_sample_app.Requests
     {
         [Required]
         public string accountReference { get; set; }
+
+        public string paymentCallbackUrl { get; set; }
+
         [Required]
         public List<string> vehicleRegisterNumbers { get; set; }
         [Required]

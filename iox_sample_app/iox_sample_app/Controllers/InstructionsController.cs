@@ -29,6 +29,7 @@ namespace iox_sample_app.Controllers
                 {
                     referenceId = "text1",
                     accountReference = "sampleaccountref",
+                    paymentCallbackUrl = "http://localhost:5100",
                     Address = new CreateQuoteRequestAddress
                     {
                         City = "Pretoria",
@@ -74,6 +75,7 @@ namespace iox_sample_app.Controllers
                 var request = new CreateQuoteRequestRealtime()
                 {
                     accountReference = "sampleaccountref",
+                    paymentCallbackUrl = "http://localhost:5100",
                     Address = new CreateQuoteRequestAddress
                     {
                         City = "Pretoria",
