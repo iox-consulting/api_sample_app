@@ -74,6 +74,7 @@ namespace iox_sample_app.Controllers
                 //PLEASE NOTE THE REQUEST'S DATA IS TEST DATA AND SHOULD NOT BE POSTED TO THE API
                 var request = new CreateQuoteRequestRealtime()
                 {
+                    referenceId = "test1",
                     accountReference = "sampleaccountref",
                     paymentCallbackUrl = "http://localhost:5100",
                     Address = new CreateQuoteRequestAddress

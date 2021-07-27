@@ -6,6 +6,8 @@ namespace iox_sample_app.Requests
     public class CreateQuoteRequestRealtime
     {
         [Required]
+        public string referenceId { get; set; }
+        [Required]
         public string accountReference { get; set; }
 
         public string paymentCallbackUrl { get; set; }
