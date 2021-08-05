@@ -16,6 +16,8 @@ namespace iox_sample_app.Responses
         [Description("Licensing Instruction Status Updated")]
         LicensingInstructionStatusUpdate = 6,
         [Description("Documents Upload Response")]
-        DocumentsUploadResponse = 7
+        DocumentsUploadResponse = 7,
+        [Description("Quote Paid")]
+        QuotePaid = 8
     }
 }

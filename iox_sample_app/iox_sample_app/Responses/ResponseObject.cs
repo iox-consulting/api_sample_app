@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace iox_sample_app.Responses
 {
@@ -17,5 +14,8 @@ namespace iox_sample_app.Responses
     {
         public int code { get; set; }
         public string message { get; set; }
+        public string details { get; set; }
+        public string severity { get; set; }
+        public int severityId { get; set; }
     }
 }

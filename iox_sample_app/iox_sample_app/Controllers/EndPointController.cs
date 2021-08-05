@@ -92,6 +92,39 @@ namespace iox_sample_app.Controllers
                     if (response.status == "Success")
                     {
                         var obj = JsonConvert.DeserializeObject<LicensingInstructionStatusUpdateResponse>(response.result.ToString());
+                        if (
+                            obj.StatusId == eLicensingInstructionStatus.AgentAcceptedInstruction
+                            || obj.StatusId == eLicensingInstructionStatus.InstructionCreated
+                        )
+                        {
+                            var details = (LicensingInstructionUpdateGeneralDetails)obj.AdditionalDetails;
+                            // TODO your logic
+                        }
+                        else if (obj.StatusId == eLicensingInstructionStatus.InstructionCompleted)
+                        {
+                            var details = (LicensingInstructionCompletedResponse)obj.AdditionalDetails;
+                            // TODO your logic
+                        }
+                        else if (
+                            obj.StatusId == eLicensingInstructionStatus.InstructionSubmittedForCourier
+                            || obj.StatusId == eLicensingInstructionStatus.InstructionCourierCollected
+                                || obj.StatusId == eLicensingInstructionStatus.InstructionCourierDelivered
+                                || obj.StatusId == eLicensingInstructionStatus.InstructionCourierInTransit
+                            )
+                        {
+                            var details = (LicensingInstructionCourierUpdateResponse)obj.AdditionalDetails;
+                            // TODO your logic
+                        }
+                        else if (obj.StatusId == eLicensingInstructionStatus.InstructionFailed)
+                        {
+                            var details = (LicensingInstructionFailedResponse)obj.AdditionalDetails;
+                            // TODO your logic
+                        }
+                        else if (obj.StatusId == eLicensingInstructionStatus.InstructionCompleted)
+                        {
+                            var details = (LicensingInstructionCompletedResponse)obj.AdditionalDetails;
+                            // TODO your logic
+                        }
                         //TODO your logic
                     }
                     else
@@ -116,6 +149,18 @@ namespace iox_sample_app.Controllers
                     if (response.status == "Success")
                     {
                         var obj = JsonConvert.DeserializeObject<QuoteCreatedResponse>(response.result.ToString());
+                        //TODO your logic
+                    }
+                    else
+                    {
+                        var errors = response.errors;
+                    }
+                }
+                else if (response.ResponseType == (int)ResponseTypes.QuotePaid)
+                {
+                    if (response.status == "Success")
+                    {
+                        var obj = JsonConvert.DeserializeObject<QuotePaidResponse>(response.result.ToString());
                         //TODO your logic
                     }
                     else
